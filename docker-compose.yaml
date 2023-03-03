@@ -1,0 +1,29 @@
+version: '3'
+services:
+  discovery-service:
+    image: discovery-service:latest
+    environment:
+      SPRING_PROFILES_ACTIVE: demo
+    restart: always
+  product-instance-management:
+    image: product-instance-management:latest
+    depends_on:
+      - discovery-service
+    environment:
+      SPRING_PROFILES_ACTIVE: demo
+      SPRING_DATASOURCE_URL: jdbc:postgresql://postgres-01.ist.aryaemini.net:5432/product_instance_management
+      SPRING_DATASOURCE_USERNAME: smartiq
+      SPRING_DATASOURCE_PASSWORD: secret
+      EUREKA_CLIENT_SERVICE_URL_DEFAULT_ZONE: http://discovery-service:8080/eureka
+    restart: always
+  proxy:
+    image: proxy:latest
+    depends_on:
+      - discovery-service
+      - product-instance-management
+    environment:
+      SPRING_PROFILES_ACTIVE: demo
+      EUREKA_CLIENT_SERVICE_URL_DEFAULT_ZONE: http://discovery-service:8080/eureka
+    ports:
+      - "8080:8080"
+    restart: always
