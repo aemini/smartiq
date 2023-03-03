@@ -23,6 +23,7 @@
 
 	<modules>
 		<module>discovery-service</module>
+		<module>product-instance-management</module>
 	</modules>
 
 	<dependencyManagement>
