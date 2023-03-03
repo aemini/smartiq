@@ -1,0 +1,17 @@
+server:
+  port: 8080
+spring:
+  application:
+    name: discovery-service
+  profiles:
+    active: ${SPRING_PROFILES_ACTIVE}
+eureka:
+  client:
+    service-url:
+      defaultZone: http://localhost:8080/eureka
+  server:
+    wait-time-in-ms-when-sync-empty: 0
+  instance:
+    hostname: localhost
+    lease-renewal-interval-in-seconds: 3
+    prefer-ip-address: true
