@@ -22,6 +22,7 @@
 	</properties>
 
 	<modules>
+		<module>commons</module>
 		<module>discovery-service</module>
 		<module>product-instance-management</module>
 	</modules>
