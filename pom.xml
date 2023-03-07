@@ -24,6 +24,7 @@
 	<modules>
 		<module>commons</module>
 		<module>discovery-service</module>
+		<module>order-management</module>
 		<module>product-instance-management</module>
 		<module>proxy</module>
 	</modules>
